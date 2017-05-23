@@ -102,15 +102,15 @@ int main()
                     pc.printf("%d : \r\n",ret);
 
 
-										char *space = strstr(strstr(c, "GET"), " ") + 1;
-										memset(path, 0, sizeof(path)); // clear path var
-										strncpy(path, space, strstr(space, " ") - space);
-										printf("Requesting: %s\r\n", path);
-										if (strcmp(path, "/") == 0) {
-												clt_sock.send(str, strlen(str));
-										} else {
-												clt_sock.send(str404, strlen(str404));
-										}
+                    char *space = strstr(strstr(c, "GET"), " ") + 1;
+                    memset(path, 0, sizeof(path)); // clear path var
+                    strncpy(path, space, strstr(space, " ") - space);
+                    printf("Requesting: %s\r\n", path);
+                    if (strcmp(path, "/") == 0) {
+                        clt_sock.send(str, strlen(str));
+                    } else {
+                        clt_sock.send(str404, strlen(str404));
+                    }
                 }
                 pc.printf("%s is closed!\r\n\n",clt_addr.get_ip_address());
                 chkSocket=0;
