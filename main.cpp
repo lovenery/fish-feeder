@@ -7,6 +7,7 @@
 #include "TCPServer.h"
 #include "TCPSocket.h"
 #include "wdg.h"
+#include <string.h>
 
 
 Serial pc(SERIAL_TX, SERIAL_RX);
@@ -51,20 +52,23 @@ void main2()
         Thread::wait(1000);
     }
 }
-
+char str[] = "HTTP/1.1 200 OK\nContent-Type: text/html\nConnection: Closed\n\n<html><body><h1>Hello, World!</h1></body></html>\n";
+char str404[] = "HTTP/1.1 404 Not Found\nConnection: Closed\nContent-Type: text/html; charset=iso-8859-1\n\n<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL was not found on this server.</p></body></html>\n";
+char path[255];
+char c[5000];
 int main()
 {
     Thread t1;
     Thread t2(osPriorityLow,DEFAULT_STACK_SIZE,NULL);
 	
     printf("Basic TCP server example\r\n");
-    char c[50];
+
     int ret=1;
     WatchdogInit();
     EthernetInterface eth;
     ret=eth.connect();
     
-    if (ret==0){
+    if (ret==0) {
         bConnect=true;
         t1.start(callback(main2));
         
@@ -80,36 +84,35 @@ int main()
         srv.listen();
         
         while (true) {
-            ret=srv.accept(&clt_sock,&clt_addr);
+            ret=srv.accept(&clt_sock, &clt_addr);
             if (ret==0)
             {
 							  t2.start(callback(SendtoClient));
 								
-                pc.printf("sucess!!\r\n");
-                pc.printf("accept %s:%d\r\n", clt_addr.get_ip_address(), clt_addr.get_port());
+                pc.printf("Connect Sucess!!\r\n");
+                pc.printf("Accept from %s:%d\r\n", clt_addr.get_ip_address(), clt_addr.get_port());
                 chkSocket=1;
                 ret =-1;
-								clt_sock.send("Hello_Client",strlen("Hello_Client"));
-                while(ret!=0)
+
+								//clt_sock.send("Hello_Client",strlen("Hello_Client"));
+
+                if (ret!=0)
                 {
-                    ret = clt_sock.recv(c,0xff); //recv how many byte of data
-                    pc.printf("%d : ",ret);
-                    if(ret>0)
-                    {
-                        if(c[0]=='0')
-                        {
-                            led=!led;
-                        }
-                        else if(c[0]=='1')
-                        {
-                            led2=!led2;    
-                        }
-                        for(int i = 0;i < ret;i++){
-                            pc.printf("%c",c[i]);}
-                        pc.printf("\r\n");
-                    } 
+                    ret = clt_sock.recv(c, sizeof(c)); //recv how many byte of data
+                    pc.printf("%d : \r\n",ret);
+
+
+										char *space = strstr(strstr(c, "GET"), " ") + 1;
+										memset(path, 0, sizeof(path)); // clear path var
+										strncpy(path, space, strstr(space, " ") - space);
+										printf("Requesting: %s\r\n", path);
+										if (strcmp(path, "/") == 0) {
+												clt_sock.send(str, strlen(str));
+										} else {
+												clt_sock.send(str404, strlen(str404));
+										}
                 }
-                pc.printf("%s is closed!\r\n",clt_addr.get_ip_address());
+                pc.printf("%s is closed!\r\n\n",clt_addr.get_ip_address());
                 chkSocket=0;
 								t2.terminate();
                 clt_sock.close();      
@@ -120,3 +123,18 @@ int main()
         }
     }
 }
+
+
+/*
+int GETindex = 0;
+int HTTPindex = 0;
+for(int i = 0;i < ret;i++) {
+		if (c[i] == 'G' && c[i+1] == 'E' && c[i+2] == 'T')
+				GETindex = i+3;
+		if (c[i] == 'H' && c[i+1] == 'T' && c[i+2] == 'T')
+				HTTPindex = i-1;
+}
+for(int i = GETindex; i < HTTPindex; i++){
+		pc.printf("%c",c[i]);
+}
+*/
