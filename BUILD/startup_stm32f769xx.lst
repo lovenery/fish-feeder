@@ -970,21 +970,20 @@ ARM Macro Assembler    Page 15
               00000000 
 Command Line: --debug --xref --cpreproc --diag_suppress=9931 --cpu=Cortex-M7 --
 apcs=interwork --depend=.\build\startup_stm32f769xx.d -o.\build\startup_stm32f7
-69xx.o -I"D:\MIAT\mbed-os-tcp-server-example_uvision5_nucleo_f767zi (1)\mbed-os
--tcp-server-example\RTE" -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.9.0\Drivers
-\CMSIS\Device\ST\STM32F7xx\Include -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\
+69xx.o -IC:\Users\user\Desktop\Ethernet\mbed-os-tcp-server-example\RTE -IC:\Kei
+l_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F7xx\Includ
+e -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0
 
 
 
 ARM Macro Assembler    Page 16 
 
 
-ARM\PACK\Keil\STM32F7xx_DFP\2.9.0 --predefine="__UVISION_VERSION SETA 518" --pr
-edefine="STM32F767xx SETA 1" --cpreproc_opts=-D__ASSERT_MSG,-DTRANSACTION_QUEUE
-_SIZE_SPI=2,-D__CORTEX_M7,-DARM_MATH_CM7,-D__FPU_PRESENT=1,-D__MBED_CMSIS_RTOS_
-CM,-D__CMSIS_RTOS --list=.\build\startup_stm32f769xx.lst mbed-os/targets/TARGET
-_STM/TARGET_STM32F7/TARGET_NUCLEO_F767ZI/device/TOOLCHAIN_ARM_STD/startup_stm32
-f769xx.s
+ --predefine="__UVISION_VERSION SETA 520" --predefine="STM32F767xx SETA 1" --cp
+reproc_opts=-D__ASSERT_MSG,-DTRANSACTION_QUEUE_SIZE_SPI=2,-D__CORTEX_M7,-DARM_M
+ATH_CM7,-D__FPU_PRESENT=1,-D__MBED_CMSIS_RTOS_CM,-D__CMSIS_RTOS --list=.\build\
+startup_stm32f769xx.lst mbed-os/targets/TARGET_STM/TARGET_STM32F7/TARGET_NUCLEO
+_F767ZI/device/TOOLCHAIN_ARM_STD/startup_stm32f769xx.s
 
 
 
