@@ -72,13 +72,13 @@ ARM Macro Assembler    Page 2
    53 00000004                 END
 Command Line: --debug --xref --cpreproc --diag_suppress=9931 --cpu=Cortex-M7 --
 apcs=interwork --depend=.\build\svc_table.d -o.\build\svc_table.o -IC:\Users\us
-er\Desktop\Ethernet\mbed-os-tcp-server-example\RTE -IC:\Keil_v5\ARM\PACK\Keil\S
-TM32F7xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include -IC:\Keil_v5\ARM\C
-MSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0 --predefine="__UVIS
-ION_VERSION SETA 520" --predefine="STM32F767xx SETA 1" --cpreproc_opts=-D__ASSE
-RT_MSG,-DTRANSACTION_QUEUE_SIZE_SPI=2,-D__CORTEX_M7,-DARM_MATH_CM7,-D__FPU_PRES
-ENT=1,-D__MBED_CMSIS_RTOS_CM,-D__CMSIS_RTOS --list=.\build\svc_table.lst mbed-o
-s/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_ARM/SVC_Table.S
+er\Desktop\mbed-os-server\RTE -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0\Dr
+ivers\CMSIS\Device\ST\STM32F7xx\Include -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Kei
+l_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0 --predefine="__UVISION_VERSION SETA 520"
+ --predefine="STM32F767xx SETA 1" --cpreproc_opts=-D__ASSERT_MSG,-DTRANSACTION_
+QUEUE_SIZE_SPI=2,-D__CORTEX_M7,-DARM_MATH_CM7,-D__FPU_PRESENT=1,-D__MBED_CMSIS_
+RTOS_CM,-D__CMSIS_RTOS --list=.\build\svc_table.lst mbed-os/rtos/rtx/TARGET_COR
+TEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_ARM/SVC_Table.S
 
 
 
