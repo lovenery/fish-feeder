@@ -1,4 +1,6 @@
-# mbed os server
+# fish feeder
+
+using mbed OS to build a tiny web service
 
 ## ENV
 
@@ -6,4 +8,9 @@
 - Development Board: STM32 NUCLEO-F767ZI
 - I/O:
   - Servomotor
-  - Dupont Line
+  - Three Dupont Lines
+
+## Team Member
+
+- [@e212156822000](https://github.com/e212156822000)
+- [@jxcodetw](https://github.com/jxcodetw)
