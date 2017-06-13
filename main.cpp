@@ -146,7 +146,7 @@ int main()
     //
 
     Thread t1; // t1 for watch dog
-    printf("Basic TCP server example\r\n");
+    printf("Fish Feeder is running! Please Wait for fetching IP.\r\n");
     int ret=1;
     WatchdogInit();
     EthernetInterface eth;
@@ -155,7 +155,7 @@ int main()
         bConnect = true;
         t1.start(callback(main2));
         
-        printf("The target IP address is '%s'\r\n", eth.get_ip_address());
+				printf("Connect this IP on your browser: '%s'\r\n", eth.get_ip_address());
         
         /* Open the server on ethernet stack */
         srv.open(&eth);
@@ -168,7 +168,7 @@ int main()
             ret=srv.accept(&clt_sock, &clt_addr);
             if (ret==0)
             {
-                pc.printf("Connect Sucess!!\r\n");
+                //pc.printf("Connect Sucess!!\r\n");
                 pc.printf("Accept from %s:%d\r\n", clt_addr.get_ip_address(), clt_addr.get_port());
                 chkSocket=1;
                 ret =-1;
